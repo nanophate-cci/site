@@ -10,6 +10,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'rspec_junit_formatter'
+  gem 'rspec_junit_formatter', git: 'https://github.com/nanophate/rspec_junit_formatter.git', branch: 'lineno'
   gem 'selenium-webdriver'
 end
