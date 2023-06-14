@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/nanophate/rspec_junit_formatter.git
-  revision: 4cc8df9fd923f31befd1a3eb87273bab49b7a492
+  revision: 724057e99df215b2b2599f66294ffae90b3ca272
   branch: lineno
   specs:
     rspec_junit_formatter (0.6.0)
@@ -58,7 +58,7 @@ GEM
     rspec-mocks (3.11.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.11.0)
-    rspec-support (3.11.0)
+    rspec-support (3.11.1)
     rubyzip (2.3.2)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)

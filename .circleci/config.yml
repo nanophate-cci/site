@@ -17,19 +17,13 @@ jobs:
             chromedriver --version
           name: Check chrome install
       - ruby/install-deps:
-          key: gem-2
+          key: gem-1
       - run:
           name: RSpec Tests
           command: |
-            bundle exec rspec -f j --dry-run | jq -r '.examples[] | .file_path + ":" + (.line_number | tostring)' | circleci tests run --command ">files.txt xargs echo" --verbose --split-by=timings > files.txt #split-by=timings is optional
-      - run:
-          name: RSpec Tests
-          command: |
-            bundle exec rspec -f j --dry-run | jq -r '.examples[] | .file_path + ":" + (.line_number | tostring)' | circleci tests run --command="xargs bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml" --verbose --split-by=timings --test-selector=classname
+            bundle exec rspec -f j --dry-run | jq -r '.examples[] | .file_path + ":" + (.line_number | tostring)' | circleci tests run --command="xargs bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml" --verbose --split-by=timings
       - store_test_results:
           path: ~/rspec/rspec.xml
-      - store_artifacts:
-          path: ~/files.txt
       - store_artifacts:
           path: ~/rspec/rspec.xml
 
