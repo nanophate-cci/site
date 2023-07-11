@@ -22,7 +22,7 @@ jobs:
       - run:
           name: RSpec split
           command: |
-            test_files=($(circleci tests glob "spec/**/*_spec.rb" | circleci tests run --command="xargs echo" --verbose --split-by=timings))
+            test_files=($(circleci tests glob "spec/**/*_spec.rb" | circleci tests run --command="xargs echo" --split-by=timings))
             echo "======"
             echo "${test_files[@]}"
             echo "======"
