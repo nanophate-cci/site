@@ -7,6 +7,7 @@ jobs:
   test:
     docker:
       - image: cimg/ruby:2.7.4-browsers
+    paralleism: 4
     steps:
       - checkout
       - browser-tools/install-chrome
@@ -19,9 +20,11 @@ jobs:
       - ruby/install-deps:
           key: gem-2
       - run:
-          name: RSpec Tests
+          name: RSpec split
           command: |
-            circleci tests glob "spec/**/*_spec.rb" | circleci tests run --command="xargs bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml" --verbose --split-by=timings
+            test_files=($(circleci tests glob "spec/**/*_spec.rb" | circleci tests run --command="xargs echo" --verbose --split-by=timings))
+            bundle exec rspec "${test_files[@]}" --profile 10 --format RspecJunitFormatter --out ~/rspec/rspec.xml --format progress
+
       - store_test_results:
           path: ~/rspec/rspec.xml
 
