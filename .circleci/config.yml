@@ -15,7 +15,7 @@ jobs:
       - run:
           command: |
             google-chrome --version
-            chromedriver --version
+            # chromedriver --version
           name: Check chrome install
       - ruby/install-deps:
           key: gem-2
