@@ -27,6 +27,9 @@ jobs:
             echo "======"
             echo "${test_files[@]}"
             echo "======"
+            echo "aaaa"
+            circleci tests glob "spec/**/*_spec.rb" | circleci tests run --command="xargs echo" --verbose
+            echo "aaaa"
             bundle exec rspec "${test_files[@]}" --profile 10 --format RspecJunitFormatter --out ~/rspec/rspec.xml --format progress
 
       - store_test_results:
