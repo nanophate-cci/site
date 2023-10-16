@@ -20,7 +20,9 @@ jobs:
           key: gem-2
       - run:
           name: RSpec Tests
-          command: .circleci/test_file
+          command: |
+              chmod +x .circleci/test_file
+              .circleci/test_file
       - store_test_results:
           path: ~/rspec/rspec.xml
 
