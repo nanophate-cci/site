@@ -18,6 +18,7 @@ jobs:
           name: Check chrome install
       - ruby/install-deps:
           key: gem-2
+      - run: sleep 500
       - run:
           name: RSpec Tests
           command: |
