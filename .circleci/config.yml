@@ -25,7 +25,10 @@ jobs:
               .circleci/test_file
       - store_test_results:
           path: ~/rspec/rspec.xml
-
+      - run:
+          name: some slep for failure 
+          command: sleep 300
+          when: on_fail 
 workflows:
   test_build:
     jobs:
