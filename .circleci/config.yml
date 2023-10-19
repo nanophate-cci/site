@@ -21,10 +21,14 @@ jobs:
       - run:
           name: RSpec Tests
           command: |
-            circleci tests glob "spec/**/*_spec.rb" | circleci tests run --command="xargs bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml" --verbose --split-by=timings
+              chmod +x .circleci/test_file
+              .circleci/test_file
       - store_test_results:
           path: ~/rspec/rspec.xml
-
+      - run:
+          name: some slep for failure 
+          command: sleep 300
+          when: on_fail 
 workflows:
   test_build:
     jobs:
